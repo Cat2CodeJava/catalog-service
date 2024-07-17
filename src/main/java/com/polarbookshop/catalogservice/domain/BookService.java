@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class BookService {
+
     private final BookRepository bookRepository;
 
     public BookService(BookRepository bookRepository) {
@@ -15,8 +16,8 @@ public class BookService {
     }
 
     public Book viewBookDetails(String isbn) {
-        return bookRepository.findByIsbn(isbn).
-                orElseThrow(() -> new BookNotFoundException(isbn));
+        return bookRepository.findByIsbn(isbn)
+                .orElseThrow(() -> new BookNotFoundException(isbn));
     }
 
     public Book addBookToCatalog(Book book) {
@@ -42,11 +43,12 @@ public class BookService {
                             book.publisher(),
                             existingBook.createdDate(),
                             existingBook.lastModifiedDate(),
+                            existingBook.createdBy(),
+                            existingBook.lastModifiedBy(),
                             existingBook.version());
                     return bookRepository.save(bookToUpdate);
                 })
                 .orElseGet(() -> addBookToCatalog(book));
     }
-
 
 }
