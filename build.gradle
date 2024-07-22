@@ -48,6 +48,7 @@ dependencies {
     testImplementation 'org.testcontainers:postgresql'
     testImplementation "com.github.dasniko:testcontainers-keycloak:${testKeycloakVersion}"
 
+    runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
     runtimeOnly 'org.postgresql:postgresql'
 
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
