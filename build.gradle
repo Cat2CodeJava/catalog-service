@@ -7,6 +7,7 @@ plugins {
 ext {
     springCloudVersion = "2023.0.2"
     set('testKeycloakVersion', "3.3.1")
+    set('otelVersion', "1.33.3")
 }
 
 group = 'com.polarbookshop'
@@ -50,6 +51,7 @@ dependencies {
 
     runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
     runtimeOnly 'org.postgresql:postgresql'
+    runtimeOnly "io.opentelemetry.javaagent:opentelemetry-javaagent:${otelVersion}"
 
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
